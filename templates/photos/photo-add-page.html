@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+<!-- Starts Main Section -->
+    <!-- Start Add Photo Section -->
+    <div class="edit-delete edit-photo">
+        <h2>Add Toy</h2>
+        <!-- Start Add Photo Form -->
+        <form method="post" action="{% url 'add photo' %}" enctype="multipart/form-data">
+            {{ form.as_p }}
+            <!-- Add Photo Button -->
+            <button class="add-btn" type="submit">Add Toy</button>
+            <a class="add-btn"  href="javascript:history.back()">Go Back</a>
+
+            {% csrf_token %}
+
+        </form>
+        <!-- End Add Photo Form -->
+    </div>
+    <!-- End Add Photo Section -->
+
+{% endblock %}

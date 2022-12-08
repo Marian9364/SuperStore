@@ -1,0 +1,91 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+
+
+    <!-- Start Profile Details Section -->
+    <div class="profile">
+
+        <!-- Start Profile Personal Data Section -->
+        <div class="profile-data">
+            <div class="profile_img">
+                <div class="image">
+                    {% if object.profile_picture %}
+                        <img src="{{ object.profile_picture }}" alt="img8">
+                    {% else %}
+                    <!-- Profile Image -->
+                    <img src="{% static 'images/person.png' %}" alt="img8">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="personal">
+                <div class="edit">
+                    <!-- User Username -->
+                    <p>{{ object.username }}</p>
+
+                    <!-- IF the viewer is the owner of the profile -->
+                    <!-- Link to Edit Profile Page -->
+                    {% if is_owner %}
+                    <a href="{% url 'profile-edit' pk=object.pk %}">
+                        <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
+                    </a>
+
+                    <!-- Link to Delete Profile Page -->
+                    <a href="{% url 'profile-delete' pk=object.pk %}">
+                        <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
+                    </a>
+                    <!-- End IF the viewer is the owner of the profile -->
+                    {% endif %}
+                </div>
+                <div class="data">
+
+                    <!-- Total Number of Photos by the User -->
+                    <span>{{ toys_count }}</span>
+                    <p>Toys</p>
+
+                    <!-- Total Number of Likes for the User -->
+                    <span>{{ likes_count }}</span>
+                    <p>Likes</p>
+                </div>
+                <!-- User Gender IF Added -->
+                {% if object.gender %}
+                    <p class="gender">{{ object.gender }}</p>
+                {% endif %}
+                <!-- User First and Last Name IF Added -->
+                {% if object.get_full_name %}
+                    <h3 class="names">{{ object.get_full_name }}</h3>
+                {% endif %}
+                <p class="sellerinfo"><b>Seller's Information:</b></p>
+                <!-- User Email Address -->
+                <p>Email: </p>
+                <p class="email">{{ object.email }}</p>
+                <p>Phone Number:</p>
+                <p class="email">{{ object.phone_number }}</p>
+
+
+            </div>
+        </div>
+        <!-- End Profile Personal Data Section -->
+
+        <!-- Start Pets Data Section -->
+        <div class="pets">
+            <div class="statuses">
+
+ <!-- Start Last Uploaded Photos Section -->
+        <div class="pet-photos">
+                {% for toy_photo in toys %}
+                    <p>{{ toy_photo.toy_name }}</p>
+                <a href="{% url 'details photo' pk=toy_photo.pk %}">
+                    <!-- Pet Photo -->
+                    <img src="{{ toy_photo.toy_photo.url }}"
+                         alt="pet img">
+                </a>
+            {% endfor %}
+            <!-- Link to Uploaded Pet Photo -->
+
+        </div>
+        <!-- End Last Uploaded Photos Section -->
+
+    </div>
+    <!-- End Profile Details Section -->
+{% endblock %}
