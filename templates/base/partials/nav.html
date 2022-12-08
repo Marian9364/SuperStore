@@ -11,12 +11,13 @@
                 <a class="home" href="{% url 'index' %}">
                     <i>Superstore</i>
                 </a>
+
             </div>
 
             <div class="nav-links">
                 <ul class="nav-group">
                     {% if request.user.is_authenticated %}
-                        <p>Welcome, {{ request.user.username }}!</p>
+                        <p>Welcome {{ request.user.username }}! Feel free to add your used toy!</p>
                     <li class="nav-item">
 
                         <!-- Link to Profile Page -->
@@ -37,6 +38,8 @@
                         </a>
                     </li>
                 {% else %}
+                        <p>Welcome to Superstore! Take a look of our second hand toys!</p>
+
                     <li class="nav-item">
 
                         <!-- Link to Login Page -->
