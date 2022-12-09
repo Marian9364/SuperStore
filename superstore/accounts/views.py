@@ -9,14 +9,16 @@ UserModel = get_user_model()
 
 
 class SignUpView(views.CreateView):
+    model = UserModel
     template_name = 'accounts/register-page.html'
     form_class = UserCreateForm
-    success_url = reverse_lazy('index')
-
-    def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-        login(request, self.object)
-        return response
+    success_url = reverse_lazy('login')
+    #login directly after register
+    #def post(self, request, *args, **kwargs):
+        #response = super().post(request, *args, **kwargs)
+        #login(request, self.object)
+        #print(self.object)
+        #return response
 
 
 class SignInView(auth_views.LoginView):
