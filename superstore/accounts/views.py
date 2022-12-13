@@ -23,6 +23,7 @@ class SignUpView(views.CreateView):
 
 class SignInView(auth_views.LoginView):
     template_name = 'accounts/login-page.html'
+    next_page = reverse_lazy('index')
 
 
 class SignOutView(auth_views.LogoutView):

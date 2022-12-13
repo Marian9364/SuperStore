@@ -41,6 +41,7 @@ class AppUser(auth_models.AbstractUser):
 
     last_name = models.CharField(
         max_length=MAX_LEN_LAST_NAME,
+        blank=True,
         validators=(
             validators.MinLengthValidator(MIN_LEN_LAST_NAME),
             validate_only_letters,

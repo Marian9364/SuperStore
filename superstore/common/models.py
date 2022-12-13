@@ -3,7 +3,6 @@ from django.contrib.auth import get_user_model
 
 from superstore.photos.models import Toy
 
-# Create your models here.
 UserModel = get_user_model()
 
 

@@ -2,7 +2,6 @@
 {% load static %}
 {% block page_content %}
 
-
     <!-- Start Profile Details Section -->
     <div class="profile">
 
@@ -55,12 +54,12 @@
                 {% if object.get_full_name %}
                     <h3 class="names">{{ object.get_full_name }}</h3>
                 {% endif %}
-                <p class="sellerinfo"><b>Seller's Information:</b></p>
+                <p class="sellerinfo"><b><u>Seller's Information:</u></b></p>
                 <!-- User Email Address -->
                 <p>Email: </p>
-                <p class="email">{{ object.email }}</p>
+                <p class="email"><b><i>{{ object.email }}</i></b> </p>
                 <p>Phone Number:</p>
-                <p class="email">{{ object.phone_number }}</p>
+                <p class="email"><b><i>{{ object.phone_number }}</i></b></p>
 
 
             </div>
@@ -73,16 +72,21 @@
 
  <!-- Start Last Uploaded Photos Section -->
         <div class="pet-photos">
+            <div class="toys-photos">
+            {% if toys %}
                 {% for toy_photo in toys %}
-                    <p>{{ toy_photo.toy_name }}</p>
+                    <p class="toy-name-profile-details">{{ toy_photo.toy_name }}</p>
                 <a href="{% url 'details photo' pk=toy_photo.pk %}">
                     <!-- Pet Photo -->
                     <img src="{{ toy_photo.toy_photo.url }}"
                          alt="pet img">
                 </a>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p>User has no toys to sell yet!</p>
+            {% endif %}
             <!-- Link to Uploaded Pet Photo -->
-
+        </div>
         </div>
         <!-- End Last Uploaded Photos Section -->
 
