@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 
 from superstore.common.views import index, like_toy, copy_link_to_clipboard, comment_toy
 

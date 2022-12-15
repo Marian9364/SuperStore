@@ -6,7 +6,7 @@ from pyperclip import copy
 from superstore.common.forms import ToyCommentForm, SearchForm
 from superstore.common.models import Like
 from superstore.photos.models import Toy
-# Create your views here.
+
 
 def apply_likes_count(toy):
     toy.likes_count = toy.like_set.count()
@@ -14,7 +14,6 @@ def apply_likes_count(toy):
 
 
 def apply_user_liked_toy(toy):
-    #TODO: fix this when current user authentication is available
     toy.is_liked_by_user = toy.likes_count > 0
     return toy
 

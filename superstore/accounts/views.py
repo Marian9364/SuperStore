@@ -1,10 +1,9 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views, get_user_model, login
 from django.views import generic as views
 
 from superstore.accounts.forms import UserCreateForm
-# Create your views here.
+
 UserModel = get_user_model()
 
 

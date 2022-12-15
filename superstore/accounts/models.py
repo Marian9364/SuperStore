@@ -1,11 +1,9 @@
-from enum import Enum
-
 from django.db import models
 from django.contrib.auth import models as auth_models
 from django.core import validators
 
-# Create your models here.
 from superstore.core.validators import validate_only_letters
+from enum import Enum
 
 
 class ChoicesEnumMixin:
