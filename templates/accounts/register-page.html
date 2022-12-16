@@ -3,12 +3,9 @@
 {% load placeholders %}
 
 {% block page_content %}
-    <!-- Start Register Section -->
     <div class="login-register-div">
         <div class="login-register-box">
             <h1>Superstore</h1>
-
-            <!-- Start Register Form -->
             <form method="post" action="{% url 'register' %}">
                 {{ form.username.errors }}
                 {{ form.username|placeholder:'Username: ' }}
@@ -23,15 +20,10 @@
                 <button type="submit">Register</button>
                 {% csrf_token %}
             </form>
-            <!-- End Register Form -->
-
         </div>
         <div class="second-option">
-
-            <!-- Link to Login Page -->
             <p>Have an account? <a href="{% url 'login' %}">Log in</a></p>
         </div>
     </div>
-    <!-- End Register Section -->
 {% endblock %}
 

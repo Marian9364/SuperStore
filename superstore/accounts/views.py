@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.contrib.auth import views as auth_views, get_user_model, login
+from django.contrib.auth import views as auth_views, get_user_model
 from django.views import generic as views
 
 from superstore.accounts.forms import UserCreateForm
@@ -16,7 +16,6 @@ class SignUpView(views.CreateView):
     #def post(self, request, *args, **kwargs):
         #response = super().post(request, *args, **kwargs)
         #login(request, self.object)
-        #print(self.object)
         #return response
 
 

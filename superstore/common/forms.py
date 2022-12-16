@@ -17,6 +17,7 @@ class ToyCommentForm(forms.ModelForm):
             ),
         }
 
+
 class SearchForm(forms.Form):
     toy_name = forms.CharField(
         max_length=40,

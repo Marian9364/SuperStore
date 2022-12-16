@@ -4,6 +4,7 @@ from superstore.common.models import Like, Comment
 from superstore.photos.models import Toy
 from superstore.core.form_mixins import DisabledFormMixin
 
+
 class PhotoBaseForm(forms.ModelForm):
     class Meta:
         model = Toy
@@ -27,9 +28,9 @@ class ToyDeleteForm(DisabledFormMixin, PhotoBaseForm):
     def save(self, commit=True):
         if commit:
             Like.objects.filter(to_toy_id=self.instance.id) \
-                .delete()  # one-to-many
+                .delete()
             Comment.objects.filter(to_toy_id=self.instance.id) \
-                .delete()  # one-to-many
+                .delete()
             self.instance.delete()
 
         return self.instance

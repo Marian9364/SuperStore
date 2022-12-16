@@ -8,11 +8,7 @@ from superstore.photos.forms import ToyCreateForm, ToyEditForm, ToyDeleteForm
 from superstore.photos.models import Toy
 
 
-# Create your views here.
-
-
 def get_post_photo_form(request, form, success_url, template_path, pk=None):
-
 
     if request.method == "POST":
         if form.is_valid():
@@ -51,7 +47,6 @@ def details_photo(request, pk):
     comments = toy.comment_set.all()
 
     user_like_toys = Toy.objects.filter(pk=pk, user_id=request.user.pk)
-    #toy.use or to_toy.user !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     context = {
         "toy": toy,
         "likes": likes,

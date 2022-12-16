@@ -1,11 +1,9 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.core.validators import MinLengthValidator
-from superstore.photos.validators import validate_file_size
 from django.contrib.auth import get_user_model
 
-
-# Create your models here.
+from superstore.photos.validators import validate_file_size
 
 UserModel = get_user_model()
 
@@ -41,11 +39,9 @@ class Toy(models.Model):
         null=False,
         blank=True,
         editable=True,
-        #editable should be set to False if user not superuser to not be able to change the slug while creating object
     )
 
     user = models.ForeignKey(UserModel, on_delete=models.RESTRICT,)
-
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

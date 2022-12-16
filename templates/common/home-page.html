@@ -3,8 +3,6 @@
 {% block page_content %}
     <div class="container">
         <div class="col-9">
-
-            <!-- Start Searchbar Form -->
             <form class="searchbar" method="get" action="{% url 'index' %}">
                 {{ search_form }}
                 <button>
@@ -12,16 +10,10 @@
                 </button>
                 {% csrf_token %}
             </form>
-            <!-- End Searchbar Form -->
             {% for toy in toys %}
-            <!-- Start Pet Photos Post Section -->
-            <!-- Start First Pet Photo Post -->
             <div class="card">
-
-                <!-- Start User Details and Image Location -->
                 <div class="top">
                     <div class="userDetails">
-                        <!-- Link to User Profile Page -->
                         <a href="{% url 'profile-details' toy.user.pk %}">
                             <div class="profilepic">
                                 <div class="profile_img">
@@ -29,43 +21,28 @@
                     {% if toy.user.profile_picture %}
                         <img src="{{ toy.user.profile_picture }}" alt="img8">
                     {% else %}
-                    <!-- Profile Image -->
                     <img src="{% static 'images/person.png' %}" alt="img8">
                     {% endif %}                                    </div>
                                 </div>
                             </div>
                         </a>
                         <h3>
-                            <!-- Link to Toy Details  Page -->
                             <a href="{% url 'details photo' pk=toy.pk %}">
-                                <!-- if user has first name and last name -->
                                 {{ toy.toy_name}}
-                                <!-- else -->
-                                <!-- show user username -->
                             </a>
                             <br>
-                            <!-- if the photo has location -->
                             <span>{{ toy.toy_description}}</span>
                         </h3>
                     </div>
                 </div>
-                <!-- End User Details and Image Location -->
-
-                <!-- Start Pet Photo -->
                 <div class="imgBx" id="photo-{{ toy.pk }}">
-                    <!-- check later it toy_photo is working -->
                     <img src="/media/{{toy.toy_photo}}" alt="post" class="cover">
                 </div>
-                <!-- End Pet Photo -->
-
-                <!-- Start Like and Share Buttons -->
                 <div class="bottom">
                     <div class="actionBtns">
                         <div class="left">
-                            <!-- Start Like Button -->
                             <span class="heart">
 									<a href="{% url 'like' toy_id=toy.pk %}">
-										<!-- if user has liked the photo -->
                                         {%  if toy.is_liked_by_user %}
                                         <svg style="color: red"
                                              xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +51,6 @@
                                              fill="currentColor"
                                              class="bi bi-heart-fill"
                                              viewBox="0 0 16 16">
-                                            <!-- Coordinate path -->
                                             <path fill-rule="evenodd"
                                                   d="M8 1.314C12.438-3.248 23.534 4.735
                                                   8 15-7.534 4.736 3.562-3.248 8 1.314z"
@@ -82,7 +58,6 @@
 
                                             </path>
                                         </svg>
-                                        <!-- else -->
                                         {% else %}
                                         <svg aria-label="Like"
                                              color="#262626"
@@ -91,7 +66,6 @@
                                              role="img"
                                              viewBox="0 0 48 48"
                                              width="24">
-                                        <!-- Coordinate path -->
                                         <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4
                                                     11.5 0 6.8-5.9 11-11.5 16S25 41.3 24
                                                     41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3
@@ -109,9 +83,6 @@
                                         {% endif %}
 								</a>
 								</span>
-                            <!-- End Like Button -->
-
-                            <!-- Start Share Button -->
                             <a href="{% url 'share' toy_id=toy.pk %}">
                                 <svg aria-label="Share Post" class="_8-yf5 " color="#262626" fill="#262626"
                                      height="24" role="img" viewBox="0 0 48 48" width="24">
@@ -124,18 +95,10 @@
                                     </path>
                                 </svg>
                             </a>
-                            <!-- End Share Button -->
 
                         </div>
                     </div>
-                    <!-- End Like and Share Buttons -->
-
-                    <!-- Number of Likes per Photo -->
                     <p class="likes">{{ toy.likes_count }} likes</p>
-
-
-                    <!-- Start Tagged Pets -->
-                    <!-- Link to First Tagged Pet Details Page-->
                     <a href="#">
                         <p class="message">
                             <b>{{ toy.toy_price }}lv</b>
@@ -146,41 +109,26 @@
                             <b>Age Restriction: {{ toy.toy_age_restriction }} years!</b>
                         </p>
                     </a>
-
-                    <!-- End Tagged Pets -->
-
-                    <!-- Link to Photo Details Page -->
                     <a href="{% url 'details photo' pk=toy.pk %}">
                         <h4 class="details">See details</h4>
                     </a>
-
-                    <!-- Date of Publication -->
                     <h5 class="postTime">{{ toy.toy_publication_date}}</h5>
-
-                    <!-- Start Add Comments Section -->
                     <div class="addComments">
                         <div class="reaction">
                             <h3>
                                 <i class="far fa-smile"></i>
                             </h3>
                         </div>
-                        <!-- Start Add Comments Form -->
                         <form method="post" action="{% url 'comment' toy_id=toy.pk%}">
                             {{ comment_form }}
                             <button type="submit">Post</button>
                             {% csrf_token %}
                         </form>
-                        <!-- End Add Comments Form -->
-
                     </div>
-                    <!-- End Add Comments Section -->
 
                 </div>
             </div>
-            <!-- End First Pet Photo Post -->
             {% endfor %}
-
-
         </div>
     </div>
 {% endblock %}
