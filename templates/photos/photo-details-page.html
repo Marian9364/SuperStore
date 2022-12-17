@@ -152,7 +152,8 @@
 
                     <!-- Date of Publication or edit of the Photo -->
                     <h5 class="postTime">{{ toy.toy_publication_date}}</h5>
-                    <p class="underlined"><u>Seller's Information</u></p>
+                    <br>
+                    <p class="underlined"><u>Seller's Information:</u></p>
                     <!-- Link to User Profile Details Page -->
 
                     <span><a href="{% url 'profile-details' pk=toy.user.id%}">
@@ -169,8 +170,8 @@
                     </span>
                     <p>E-mail: <b>{{ toy.user.email }}</b></p>
                     <p>Phone Number: <b>{{ toy.user.phone_number }}</b></p>
-
-                <p><u>Comments</u></p>
+                <br>
+                <p><u>Comments:</u></p>
 
                     <!-- Start Comments Section -->
                 {% for comment in comments %}

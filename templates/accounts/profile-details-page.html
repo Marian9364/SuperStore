@@ -40,11 +40,10 @@
                 {% if object.get_full_name %}
                     <h3 class="names">{{ object.get_full_name }}</h3>
                 {% endif %}
-                <p class="sellerinfo"><b><u>Seller's Information:</u></b></p>
-                <p>Email: </p>
-                <p class="email"><b><i>{{ object.email }}</i></b> </p>
-                <p>Phone Number:</p>
-                <p class="email"><b><i>{{ object.phone_number }}</i></b></p>
+                <br>
+                <p class="sellerinfo"><b><u>Seller's Contact:</u></b></p>
+                <p class="email">Email: <b><i>{{ object.email }}</i></b></p>
+                <p class="email">Phone Number: <i><b>{{ object.phone_number }}</b></i></p>
 
 
             </div>
