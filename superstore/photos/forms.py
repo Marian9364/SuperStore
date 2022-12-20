@@ -1,3 +1,5 @@
+import os
+
 from django import forms
 
 from superstore.common.models import Like, Comment
@@ -27,11 +29,13 @@ class ToyDeleteForm(DisabledFormMixin, PhotoBaseForm):
 
     def save(self, commit=True):
         if commit:
+            image_path = self.instance.toy_photo.path
             Like.objects.filter(to_toy_id=self.instance.id) \
                 .delete()
             Comment.objects.filter(to_toy_id=self.instance.id) \
                 .delete()
             self.instance.delete()
+            os.remove(image_path)
 
         return self.instance
 
