@@ -101,7 +101,7 @@
                     <p class="likes">{{ toy.likes_count }} likes</p>
                     <a href="#">
                         <p class="message">
-                            <b>{{ toy.toy_price }}lv</b>
+                            <b>{{ toy.toy_price|floatformat:2 }}lv</b>
                         </p>
                     </a>
                     <a href="#">

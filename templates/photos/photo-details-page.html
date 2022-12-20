@@ -148,7 +148,7 @@
 
                     <!-- Photo description -->
                     <p class="pet-details">{{ toy.toy_description}}</p>
-                    <p class="pet-details"><b>{{ toy.toy_price}}lv.</b></p>
+                    <p class="pet-details"><b>{{ toy.toy_price|floatformat:2 }}lv.</b></p>
 
                     <!-- Date of Publication or edit of the Photo -->
                     <h5 class="postTime">{{ toy.toy_publication_date}}</h5>
