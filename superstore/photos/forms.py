@@ -34,3 +34,7 @@ class ToyDeleteForm(DisabledFormMixin, PhotoBaseForm):
             self.instance.delete()
 
         return self.instance
+
+    class Meta:
+        model = Toy
+        fields = ()
